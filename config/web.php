@@ -8,9 +8,12 @@ $config = [
     'bootstrap' => ['log'],
     'components' => [
         'urlManager' => [
+            'baseUrl' => '/',
+            'showScriptName' => false,
             'enablePrettyUrl' => true,
         ],
         'request' => [
+            'baseUrl' => '/',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'fdshfk34y843fkjdsh',
         ],

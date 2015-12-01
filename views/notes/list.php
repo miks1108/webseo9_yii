@@ -23,7 +23,7 @@
             <tr>
                 <td class="col-md-1"><?=$note->id?></td>
                 <td><?=$note->title?></td>
-                <td>
+                <td class="col-md-1">
                     <a href="/notes/del?id=<?=$note->id?>" class="label label-warning">
                         Delete
                     </a>

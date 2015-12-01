@@ -7,7 +7,7 @@ use yii\web\Controller;
 class NotesController extends Controller {
 
     public function actionIndex() {
-        $notes = Note::findAll();
+        $notes = Note::find()->all();
         return $this->render('list', ['notes' => $notes]);
     }
 

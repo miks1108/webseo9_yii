@@ -11,8 +11,24 @@
 
 <br>
 
-<ul>
-    <? foreach($notes as $note) { ?>
-        <li><?=$note->title?></li>
-    <? } ?>
-</ul>
+<div class="panel panel-default">
+    <div class="panel-heading">Notes List</div>
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+        </tr>
+
+        <? foreach($notes as $note) { ?>
+            <tr>
+                <td class="col-md-1"><?=$note->id?></td>
+                <td><?=$note->title?></td>
+                <td>
+                    <a href="/notes/del?id=<?=$note->id?>" class="label label-warning">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        <? } ?>
+    </table>
+</div>

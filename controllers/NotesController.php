@@ -11,4 +11,13 @@ class NotesController extends Controller {
         return $this->render('list', ['notes' => $notes]);
     }
 
+    public function actionAdd() {
+        $note = new Note();
+        $note->title = $_POST['title'];
+        $note->text = $_POST['text'];
+        $note->save();
+
+        $this->redirect(['notes']);
+    }
+
 }

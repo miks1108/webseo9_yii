@@ -2,6 +2,6 @@
 
 <ul>
     <? foreach($notes as $note) { ?>
-        <li><?=$note['title']?></li>
+        <li><?=$note->title?></li>
     <? } ?>
 </ul>

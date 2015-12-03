@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use app\models\Note;
 use yii\web\Controller;
+use yii\web\Request;
 
 class NotesController extends Controller {
 
@@ -18,6 +19,26 @@ class NotesController extends Controller {
         $note->save();
 
         $this->redirect(['/notes']);
+    }
+
+    public function actionEdit() {
+
+        if(\Yii::$app->request->getIsPost()) {
+            $id = $_POST['id'];
+
+            $note = Note::findOne($id);
+            $note->title = $_POST['title'];
+            $note->text = $_POST['text'];
+            $note->save();
+            $this->redirect(['/notes']);
+        }
+        else {
+            $id = $_GET['id'];
+            $note = Note::findOne($id);
+            return $this->render('edit', [
+                'note' => $note
+            ]);
+        }
     }
 
     public function actionDel() {

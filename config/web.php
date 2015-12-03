@@ -11,6 +11,9 @@ $config = [
             'baseUrl' => '/',
             'showScriptName' => false,
             'enablePrettyUrl' => true,
+            'rules' => [
+                'note/<id:\d+>' => 'notes/read',
+            ]
         ],
         'request' => [
             'baseUrl' => '/',

@@ -21,6 +21,15 @@ class NotesController extends Controller {
         $this->redirect(['/notes']);
     }
 
+    public function actionRead() {
+        $id = $_GET['id'];
+        $note = Note::findOne($id);
+
+        return $this->render('read', [
+            'note' => $note
+        ]);
+    }
+
     public function actionEdit() {
 
         if(\Yii::$app->request->getIsPost()) {

@@ -22,10 +22,17 @@
         <? foreach($notes as $note) { ?>
             <tr>
                 <td class="col-md-1"><?=$note->id?></td>
-                <td><?=$note->title?></td>
+                <td>
+                    <a href="/note/<?=$note->id?>">
+                        <?=$note->title?>
+                    </a>
+                </td>
                 <td class="col-md-1">
-                    <a href="/notes/del?id=<?=$note->id?>" class="label label-warning">
-                        Delete
+                    <a href="/notes/edit?id=<?=$note->id?>" class="col-md-5 label label-warning">
+                        Edit
+                    </a>
+                    <a href="/notes/del?id=<?=$note->id?>" class="col-md-offset-1 col-md-5 label label-danger">
+                        Del
                     </a>
                 </td>
             </tr>

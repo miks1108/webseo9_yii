@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 08 2015 г., 21:47
+-- Время создания: Дек 08 2015 г., 22:33
 -- Версия сервера: 5.5.45
 -- Версия PHP: 5.4.44
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `address` (
 CREATE TABLE IF NOT EXISTS `departments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `address_id` int(11) NOT NULL,
+  `address_id` int(11) DEFAULT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `district_id` int(11) NOT NULL,
   `responsible_id` int(11) DEFAULT NULL,
@@ -50,7 +50,17 @@ CREATE TABLE IF NOT EXISTS `departments` (
   KEY `address_id` (`address_id`),
   KEY `district_id` (`district_id`),
   KEY `responsible_id` (`responsible_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Дамп данных таблицы `departments`
+--
+
+INSERT INTO `departments` (`id`, `name`, `address_id`, `description`, `district_id`, `responsible_id`) VALUES
+(1, 'test', NULL, 'test', 1, NULL),
+(2, 'test', NULL, 'test', 2, NULL),
+(3, 'Яготинське районне управління юстиції', NULL, 'dsfsdfsdfsdf', 3, NULL),
+(4, 'Яготинське районне управління юстиції', NULL, '', 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -72,10 +82,20 @@ CREATE TABLE IF NOT EXISTS `department_phone_numbers` (
 --
 
 CREATE TABLE IF NOT EXISTS `districts` (
-  `name` int(11) NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Дамп данных таблицы `districts`
+--
+
+INSERT INTO `districts` (`name`, `id`) VALUES
+('0', 1),
+('test', 2),
+('Яготин', 3),
+('Яготин', 4);
 
 -- --------------------------------------------------------
 

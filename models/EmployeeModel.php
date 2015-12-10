@@ -9,11 +9,19 @@ use yii\base\Model;
  * @author Gutsulyak Vadim <guts.vadim@gmail.com>
  */
 class EmployeeModel extends Model {
-    private $firstName;
-    private $lastName;
-    private $secondName;
-    private $positionName;
-    private $salary;
+    public $firstName;
+    public $lastName;
+    public $secondName;
+    public $positionName;
+    public $salary;
+
+
+    public function rules()
+    {
+        return [
+            [['firstName', 'lastName', 'secondName', 'salary'], 'required']
+        ];
+    }
 
     public function add() {
         $person = new Person();
@@ -22,9 +30,9 @@ class EmployeeModel extends Model {
         $person->second_name = $this->secondName;
         $person->save();
 
-        $position = new Position();
+        /*$position = new Position();
         $position->name = $this->positionName;
-        $position->save();
+        $position->save();*/
 
         $employee = new Employee();
         $employee->person_id = $person->id;
@@ -32,5 +40,9 @@ class EmployeeModel extends Model {
 
         $employee->save();
 
+    }
+
+    public function getAll() {
+        return Employee::find()->with('person')->all();
     }
 }

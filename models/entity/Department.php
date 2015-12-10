@@ -16,4 +16,8 @@ class Department extends ActiveRecord {
         return $this->hasOne(District::className(), ['id' => 'district_id']);
     }
 
+    public function getAddress() {
+        return $this->hasOne(Address::className(), ['id' => 'address_id']);
+    }
+
 }

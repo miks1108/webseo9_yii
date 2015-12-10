@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use app\models\entity\District;
 use app\models\entity\Department;
+use app\models\entity\Address;
 use yii\web\Controller;
 
 /**
@@ -22,6 +23,13 @@ class DepartmentController extends Controller {
         $name = $_POST['name'];
         $description = $_POST['description'];
         $districtName = $_POST['districtName'];
+        $addr = $_POST['address'];
+        $postCode = $_POST['postCode'];
+
+        $address = new Address();
+        $address->address = $addr;
+        $address->post_code = $postCode;
+        $address->save();
 
         $district = District::find()->where(['name' => $districtName])->one();
 
@@ -36,6 +44,7 @@ class DepartmentController extends Controller {
         $department->description = $description;
 
         $department->district_id = $district->id;
+        $department->address_id = $address->id;
 
         $department->save();
 

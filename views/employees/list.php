@@ -53,7 +53,9 @@
         <? foreach($employees as $employee) { ?>
             <tr>
                 <td>
-
+                    <?=$employee->person->last_name?>
+                    <?=$employee->person->first_name?>
+                    <?=$employee->person->second_name?>
                 </td>
                 <td>
                     <?=$employee->salary?>

@@ -18,6 +18,6 @@ class Employee extends ActiveRecord {
     }
 
     public function getPerson() {
-        return $this->hasOne(Person::className(), ['id', 'person_id']);
+        return $this->hasOne(Person::className(), ['id' => 'person_id']);
     }
 }

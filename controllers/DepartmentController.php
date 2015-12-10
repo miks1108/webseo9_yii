@@ -23,9 +23,13 @@ class DepartmentController extends Controller {
         $description = $_POST['description'];
         $districtName = $_POST['districtName'];
 
-        $district = new District();
-        $district->name = $districtName;
-        $district->save();
+        $district = District::find()->where(['name' => $districtName])->one();
+
+        if($district == NULL) {
+            $district = new District();
+            $district->name = $districtName;
+            $district->save();
+        }
 
         $department = new Department();
         $department->name = $name;

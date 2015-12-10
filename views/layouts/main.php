@@ -36,7 +36,9 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Департаменты', 'url' => ['/department/list']],
+            ['label' => 'Сотрудники', 'url' => ['/employees/list']],
+            /*['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ?
@@ -45,7 +47,7 @@ AppAsset::register($this);
                     'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
-                ],
+                ],*/
         ],
     ]);
     NavBar::end();

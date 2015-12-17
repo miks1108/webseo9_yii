@@ -26,6 +26,23 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="position" class="col-sm-2 control-label">
+            Должность:
+        </label>
+        <div class="col-sm-10">
+            <div class="col-sm-5">
+                <select id="positions" multiple="multiple" name="EmployeeModel[positions][]">
+                    <? foreach($positions as $position) { ?>
+                        <option><?=$position->name?></option>
+                    <? } ?>
+                </select>
+            </div>
+            <!--<div class="col-sm-5">
+            <input type="text" class="form-control" name="EmployeeModel[secondName]" id="secondName" placeholder="Должность"
+            </div>-->
+        </div>
+    </div>
+    <div class="form-group">
         <label for="salary" class="col-sm-2 control-label">
             Оклад:
         </label>
@@ -47,6 +64,7 @@
     <table class="table">
         <tr>
             <th>ФИО</th>
+            <th>Должности</th>
             <th>Оклад</th>
         </tr>
 
@@ -58,9 +76,24 @@
                     <?=$employee->person->second_name?>
                 </td>
                 <td>
+                    <? foreach($employee->positions as $position) { ?>
+                        <?=$position->name?>,
+                    <?}?>
+                </td>
+                <td>
                     <?=$employee->salary?>
                 </td>
             </tr>
         <? } ?>
     </table>
 </div>
+
+<script>
+    $('#positions').multiselect({
+        buttonClass: 'positions btn btn-default'
+    });
+
+    $('.positions').click(function() {
+        $(this).parent('.btn-group').toggleClass('open');
+    });
+</script>

@@ -30,16 +30,19 @@
             Должность:
         </label>
         <div class="col-sm-10">
-            <div class="col-sm-5">
+            <div class="col-sm-2">
                 <select id="positions" multiple="multiple" name="EmployeeModel[positions][]">
                     <? foreach($positions as $position) { ?>
                         <option><?=$position->name?></option>
                     <? } ?>
                 </select>
             </div>
-            <!--<div class="col-sm-5">
-            <input type="text" class="form-control" name="EmployeeModel[secondName]" id="secondName" placeholder="Должность"
-            </div>-->
+            <div class="col-sm-2">
+                <input type="text" class="form-control newPositionName">
+            </div>
+            <div class="col-sm-2">
+                <input type="button" class="btn btn-success addPosition" value="Добавить">
+            </div>
         </div>
     </div>
     <div class="form-group">
@@ -95,5 +98,11 @@
 
     $('.positions').click(function() {
         $(this).parent('.btn-group').toggleClass('open');
+    });
+    $('.addPosition').click(function() {
+        $('#positions').append($('<option>', {
+            text: $('.newPositionName').val()
+        }));
+        $('#positions').multiselect('rebuild');
     });
 </script>
